@@ -32,7 +32,6 @@ def writeln(data, check = 1):
         sys.stdout.write("\r\n->")
         sys.stdout.write(data.split("\r")[0])
     s.write(data)
-    sleep(0.3)
     if check > 0 :
        line = ''
        char = ''
@@ -42,7 +41,7 @@ def writeln(data, check = 1):
                raise Exception('No proper answer from MCU')
            if char == chr(13) or char == chr(10) : # LF or CR
               if line != '':
-                 if line+'\r' == data :
+                 if line.strip()+'\r' == data :
                     sys.stdout.write(" -> ok")
                  else :
                     if line[:4] == "lua:" :
